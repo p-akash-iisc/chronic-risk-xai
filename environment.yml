@@ -1,0 +1,13 @@
+name: chronic-risk-xai
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - numpy
+  - pandas
+  - scikit-learn
+  - scipy
+  - pip
+  - pip:
+      - -r requirements.txt

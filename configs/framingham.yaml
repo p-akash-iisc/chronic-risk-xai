@@ -1,0 +1,50 @@
+# Framingham configuration (requires local CSV path or manual download)
+dataset:
+  name: framingham
+  source_path: "data/raw/framingham.csv"  # put your CSV here
+  target: "TenYearCHD"
+  id_column: null
+  test_size: 0.2
+  val_size: 0.1
+  random_state: 42
+
+features:
+  include: ["age","sex","cigsPerDay","BPMeds","prevalentStroke","prevalentHyp","diabetes","totChol","sysBP","diaBP","BMI","heartRate","glucose"]
+  categorical: ["sex","BPMeds","prevalentStroke","prevalentHyp","diabetes"]
+  drop: []
+
+preprocessing:
+  imputation: "median"
+  clip_outliers: true
+  clip_q: [0.01, 0.99]
+  scaling: "standard"
+
+training:
+  cv_folds: 5
+  n_jobs: -1
+  class_weight: "balanced"
+
+optuna:
+  optimize_metric: "pr_auc"
+  n_trials: 20
+  timeout: null
+  seed: 42
+  sampler: "tpe"
+  pruner: "median"
+
+calibration:
+  method: "sigmoid"
+
+thresholds:
+  strategy: "recall_at_k"
+  recall_at_k: 0.1
+  grid: [0.2, 0.3, 0.4, 0.5]
+
+fairness:
+  group_columns: ["sex"]
+
+paths:
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+  artifacts_dir: "models/artifacts"
+  reports_dir: "models/reports"

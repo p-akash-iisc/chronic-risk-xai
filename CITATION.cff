@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+title: "Chronic Disease Risk Prediction with Explainable AI"
+message: "Please cite this software if you use it."
+type: software
+authors:
+  - family-names: Your
+    given-names: Name
+repository-code: https://github.com/yourname/chronic-risk-xai
+license: MIT
+version: "1.0.0"
+date-released: "2025-10-12"

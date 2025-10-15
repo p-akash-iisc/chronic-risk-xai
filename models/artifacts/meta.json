@@ -1,0 +1,6 @@
+{
+  "best_model": "rf",
+  "primary_metric": "pr_auc",
+  "best_score": 0.760159551004796,
+  "threshold": 0.7643467643467643
+}

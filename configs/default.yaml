@@ -1,0 +1,51 @@
+# Default: UCI Pima Indians Diabetes
+dataset:
+  name: pima
+  source_path: null           # optional local CSV override
+  target: "target"
+  id_column: null
+  checksum: "2b8f7b6b1c3c9d0a1b5e8d0c7f9f2b63c9e1a9d6d0c1a2b3c4d5e6f7a8b9c0d1"  # placeholder; validated only if downloaded by script
+  test_size: 0.2
+  val_size: 0.1
+  random_state: 42
+
+features:
+  include: ["pregnancies", "glucose", "blood_pressure", "skin_thickness", "insulin", "bmi", "diabetes_pedigree", "age"]
+  categorical: []  # e.g., ["sex"]
+  drop: []
+
+preprocessing:
+  imputation: "median"       # median | most_frequent
+  clip_outliers: true
+  clip_q: [0.01, 0.99]
+  scaling: "standard"        # standard | minmax
+
+training:
+  cv_folds: 5
+  n_jobs: -1
+  class_weight: "balanced"   # null | balanced
+
+optuna:
+  optimize_metric: "pr_auc"
+  n_trials: 20
+  timeout: null
+  seed: 42
+  sampler: "tpe"
+  pruner: "median"
+
+calibration:
+  method: "isotonic"   # isotonic | sigmoid | none
+
+thresholds:
+  strategy: "recall_at_k"  # grid | recall_at_k
+  recall_at_k: 0.1         # top 10%%
+  grid: [0.2, 0.3, 0.4, 0.5]
+
+fairness:
+  group_columns: []  # e.g., ["sex", "age_bin"]
+
+paths:
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+  artifacts_dir: "models/artifacts"
+  reports_dir: "models/reports"

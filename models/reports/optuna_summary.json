@@ -1,0 +1,8 @@
+{
+  "optimize_metric": "pr_auc",
+  "best_value_cv": 0.7091889239243389,
+  "best_params_global": {
+    "model": "logreg",
+    "logreg__C": 10.0
+  }
+}
