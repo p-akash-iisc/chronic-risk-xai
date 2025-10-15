@@ -182,9 +182,4 @@ Released under the [MIT License](LICENSE).
 
 ⭐ *If you found this project helpful, please consider giving it a star!* 🌟
 
-```
 
----
-
-Would you like me to make a **shorter "resume-style project summary"** version too — something you can directly paste into your CV or LinkedIn under *Projects*?
-```
