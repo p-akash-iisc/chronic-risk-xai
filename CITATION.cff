@@ -3,8 +3,7 @@ title: "Chronic Disease Risk Prediction with Explainable AI"
 message: "Please cite this software if you use it."
 type: software
 authors:
-  - family-names: Your
-    given-names: Name
+  - family-names: Pukhrambam Akash Singh
 repository-code: https://github.com/yourname/chronic-risk-xai
 license: MIT
 version: "1.0.0"
