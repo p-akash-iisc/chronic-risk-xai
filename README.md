@@ -6,7 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-red?logo=streamlit)](#)
 
-### 🚀 [**Live Streamlit Dashboard → (https://chronic-risk-xai.streamlit.app-p-akash-singh/)**](#)
+### 🚀 [**Live Streamlit Dashboard → (https://chronic-risk-xai-p-akash-singh.streamlit.app/)**](#)
 
 
 
