@@ -1,7 +1,3 @@
-Perfect 👍 Here’s your **professional, concise, recruiter-ready README.md** — focused only on your **Streamlit dashboard project** (no FastAPI).
-It highlights your technical depth (ML, XAI, MLOps) while keeping it clean and visually appealing for GitHub and portfolio use.
-
----
 
 ````markdown
 # 🧠 Chronic Disease Risk Prediction with Explainable AI (XAI)
