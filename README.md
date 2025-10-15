@@ -6,7 +6,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-red?logo=streamlit)](#)
 
-### 🚀 [**Live Streamlit Dashboard → (Add your Streamlit link here)**](#)
+### 🚀 [**Live Streamlit Dashboard → (https://chronic-risk-xai.streamlit.app/)**](#)
+
 
 A complete, production-grade **Machine Learning project** for predicting **chronic disease risk** (default: Diabetes) using **Explainable AI (SHAP)**.  
 The project integrates **data processing, hyperparameter optimization (Optuna)**, **robust evaluation**, and a **modern Streamlit dashboard** for interactive explainability and predictions.
