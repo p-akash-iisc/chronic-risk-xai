@@ -1,68 +1,74 @@
-# Chronic Disease Risk Prediction with Explainable AI
-
-[![CI](https://img.shields.io/github/actions/workflow/status/yourname/chronic-risk-xai/ci.yml?branch=main)](https://github.com/yourname/chronic-risk-xai/actions)
-[![Coverage](https://img.shields.io/badge/coverage-~80%25-brightgreen)](#)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-
-**One-command, production-quality ML project** for predicting chronic disease risk (Diabetes by default; Framingham as optional) with Explainable AI (SHAP), robust evaluation, fairness checks, Optuna HPO, Streamlit dashboard, and FastAPI service.
+Perfect 👍 Here’s your **professional, concise, recruiter-ready README.md** — focused only on your **Streamlit dashboard project** (no FastAPI).
+It highlights your technical depth (ML, XAI, MLOps) while keeping it clean and visually appealing for GitHub and portfolio use.
 
 ---
 
-## Quickstart
+````markdown
+# 🧠 Chronic Disease Risk Prediction with Explainable AI (XAI)
+
+[![Coverage](https://img.shields.io/badge/coverage-~80%25-brightgreen)](#)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Streamlit](https://img.shields.io/badge/Streamlit-Dashboard-red?logo=streamlit)](#)
+
+### 🚀 [**Live Streamlit Dashboard → (Add your Streamlit link here)**](#)
+
+A complete, production-grade **Machine Learning project** for predicting **chronic disease risk** (default: Diabetes) using **Explainable AI (SHAP)**.  
+The project integrates **data processing, hyperparameter optimization (Optuna)**, **robust evaluation**, and a **modern Streamlit dashboard** for interactive explainability and predictions.
+
+---
+
+## ⚙️ Quickstart
 
 ```bash
-# 1) Clone and setup
-git clone https://github.com/yourname/chronic-risk-xai.git
+# 1️⃣ Clone and setup
+git clone https://github.com/p-akash-iisc/chronic-risk-xai.git
 cd chronic-risk-xai
 make setup
 
-# 2) Get data (default: Pima Indians Diabetes from UCI)
+# 2️⃣ Get data (default: UCI Pima Indians Diabetes)
 make data
 
-# 3) Train, evaluate, explain
+# 3️⃣ Train, evaluate, and explain
 make train
 make evaluate
 make explain
 
-# 4) Apps
-make dashboard   # Streamlit at http://localhost:8501
-make api         # FastAPI at http://127.0.0.1:8000/docs
-```
+# 4️⃣ Launch dashboard
+make dashboard   # Streamlit → http://localhost:8501
+````
 
-> Reproducible on a fresh machine: **`make setup && make data && make train && make evaluate`**
-
----
-
-## Project Overview
-
-- **Goal:** Predict chronic disease risk with **transparency** and **fairness**.
-- **Explainability:** SHAP global & local plots.
-- **Evaluation:** ROC-AUC, PR-AUC, F1, Recall@K, calibration; gains/lift; bootstrap CIs.
-- **Fairness:** Per-group metrics (e.g., `sex`, `age_bin`), Δgaps.
-- **Tuning:** Optuna (TPE + MedianPruner) across LogisticRegression, RandomForest, XGBoost, LightGBM.
-- **Repro:** Seeds, environment files, CI, tests. Experiments logged via MLflow (local `mlruns/`).
-
-### Pipeline Diagram
-
-```
-raw data → cleaning & split → features → HPO + training → evaluation → SHAP & fairness → apps (API/Dashboard)
-```
+> 💡 Fully reproducible on any system:
+> `make setup && make data && make train && make evaluate`
 
 ---
 
-## Repository Layout
+## 📊 Project Overview
+
+| Component           | Description                                               |
+| ------------------- | --------------------------------------------------------- |
+| **Goal**            | Predict chronic disease risk (Diabetes) with transparency |
+| **Explainability**  | SHAP (global & local) visualizations                      |
+| **Evaluation**      | ROC-AUC, PR-AUC, F1, Recall@K, Calibration, Gains/Lift    |
+| **Optimization**    | Optuna (TPE + MedianPruner) for multiple algorithms       |
+| **Models**          | Logistic Regression, Random Forest, XGBoost, LightGBM     |
+| **Interface**       | Interactive Streamlit dashboard for analysis & prediction |
+| **Reproducibility** | Fixed seeds, structured configs, and clean artifacts      |
+
+---
+
+## 🧩 Pipeline Overview
+
+```
+Raw data → Preprocessing → Feature Engineering → Model Training & HPO
+           → Evaluation & Explainability → Streamlit Dashboard
+```
+
+---
+
+## 🗂️ Repository Structure
 
 ```
 chronic-risk-xai/
-├─ README.md
-├─ LICENSE
-├─ CITATION.cff
-├─ pyproject.toml
-├─ requirements.txt
-├─ environment.yml
-├─ Makefile
-├─ .gitignore
-├─ .github/workflows/ci.yml
 ├─ configs/
 │  ├─ default.yaml
 │  └─ framingham.yaml
@@ -70,116 +76,119 @@ chronic-risk-xai/
 │  ├─ raw/
 │  ├─ processed/
 │  └─ sample/
+├─ models/
+│  ├─ artifacts/
+│  └─ reports/
+├─ src/
+│  ├─ chronic_risk/
+│  │  ├─ data.py, train.py, evaluate.py, explain.py, dashboard.py, ...
+│  └─ cli/
+│      ├─ prepare_data.py, run_experiment.py, run_explain.py, launch_dashboard.py
 ├─ notebooks/
 │  ├─ 01_eda.ipynb
 │  ├─ 02_feature_engineering.ipynb
 │  └─ 03_model_cards.ipynb
-├─ src/
-│  ├─ chronic_risk/
-│  │  ├─ __init__.py
-│  │  ├─ data.py
-│  │  ├─ features.py
-│  │  ├─ modeling.py
-│  │  ├─ train.py
-│  │  ├─ evaluate.py
-│  │  ├─ explain.py
-│  │  ├─ fairness.py
-│  │  ├─ api.py
-│  │  ├─ dashboard.py
-│  │  ├─ utils.py
-│  │  └─ sql/
-│  │      ├─ queries.sql
-│  │      └─ runner.py
-│  └─ cli/
-│      ├─ prepare_data.py
-│      ├─ run_experiment.py
-│      ├─ run_explain.py
-│      ├─ serve_api.py
-│      └─ launch_dashboard.py
-├─ models/
-│  ├─ artifacts/
-│  └─ reports/
-└─ tests/
-   ├─ test_data.py
-   ├─ test_features.py
-   ├─ test_modeling.py
-   ├─ test_api.py
-   └─ test_dashboard.py
+├─ requirements.txt
+├─ Makefile
+├─ LICENSE
+└─ README.md
 ```
 
 ---
 
-## Dataset Options
+## 📚 Dataset
 
-- **Default:** UCI Pima Indians Diabetes. Auto-downloaded with checksum validation.
-- **Optional:** Framingham Heart Study (manual or pre-downloaded CSV). Switch with:
-  ```bash
-  make train CONFIG=configs/framingham.yaml
-  ```
+* **Default:** [UCI Pima Indians Diabetes Dataset](https://archive.ics.uci.edu/ml/datasets/pima+indians+diabetes)
+* **Optional:** Framingham Heart Study (local CSV)
 
-See `data/README.md` for details.
+Switch datasets easily:
 
----
-
-## Operations Guide
-
-### 1) Switching Datasets
 ```bash
-make train CONFIG=configs/default.yaml      # Pima (default)
-make train CONFIG=configs/framingham.yaml   # Framingham (requires CSV path or manual download)
+make train CONFIG=configs/framingham.yaml
 ```
 
-### 2) Use Your Own Data
-- Place CSV in `data/raw/`.
-- Copy the config and edit paths/columns:
-  ```bash
-  cp configs/default.yaml configs/custom.yaml
-  # Edit dataset.source_path, dataset.target, features.include, fairness.group_columns, etc.
-  make data CONFIG=configs/custom.yaml
-  make train CONFIG=configs/custom.yaml
-  ```
+Use your own dataset:
 
-### 3) MLflow UI
 ```bash
-python -m mlflow ui --backend-store-uri mlruns
-# open http://127.0.0.1:5000
+cp configs/default.yaml configs/custom.yaml
+# Edit dataset paths, target column, and features
+make train CONFIG=configs/custom.yaml
 ```
 
-### 4) FastAPI Examples
+---
+
+## 📈 Model Performance (Expected)
+
+| Metric                  | Expected Value    |
+| ----------------------- | ----------------- |
+| **ROC-AUC**             | ≥ 0.85            |
+| **PR-AUC**              | ≥ baseline + 0.10 |
+| **Calibration (Brier)** | ≤ 0.15            |
+
+> The best model is automatically selected based on validation **PR-AUC**.
+
+---
+
+## 🧮 Evaluation & Explainability
+
+* **ROC / PR Curves:** Model discrimination
+* **Confusion Matrix:** True/False Positives & Negatives
+* **Calibration Curve:** Probability reliability
+* **Gains & Lift Charts:** Targeting effectiveness
+* **SHAP Explainability:**
+
+  * *Global* — Beeswarm & bar plots (feature importance)
+  * *Local* — Waterfall plot (individual risk explanations)
+
+---
+
+## 🎨 Streamlit Dashboard Features
+
+✅ **Model Comparison** — View metrics & plots for all trained models
+✅ **Interactive Explainability** — Visualize SHAP global & local impacts
+✅ **Sample Predictions** — Explore high/low-risk samples from validation set
+✅ **Custom Uploads** — Upload your own CSV to predict new patient risks
+✅ **Light/Dark Mode** — Adaptive, aesthetic theme with clean UI
+
+---
+
+## 🧰 Development Commands
+
 ```bash
-# health
-curl -s http://127.0.0.1:8000/health
-
-# predict one
-curl -s -X POST http://127.0.0.1:8000/predict   -H "Content-Type: application/json"   -d '{"glucose": 148, "bmi": 33.6, "age": 50, "blood_pressure": 72,
-       "insulin": 0, "skin_thickness": 35, "pregnancies": 2, "diabetes_pedigree": 0.35}'
+make fmt      # Auto-format with Black + isort
+make lint     # Static linting (ruff)
+make test     # Run unit tests (pytest)
 ```
 
 ---
 
-## Expected Metrics (Pima)
-- ROC-AUC ≥ **0.85** (with tuned XGB/LGBM).
-- PR-AUC ≥ **baseline + 0.10**.
-(We document seeds and any remaining nondeterminism.)
+## ⚖️ Ethical Use
+
+This project is for **educational and research purposes**.
+Predictions **should not** be used for medical decisions without expert oversight.
+Ensure fairness and bias evaluation before any real-world use.
 
 ---
 
-## Ethics & Bias
-Healthcare ML can entrench inequities. We provide: per-group metrics, Δgaps, and calibration diagnostics. **Never** use predictions as the sole clinical criterion. Ensure IRB/privacy compliance and de-identify PHI.
+## 📄 License
+
+Released under the [MIT License](LICENSE).
 
 ---
 
-## Development
-```bash
-make fmt      # auto-format (black) & organize imports
-make lint     # ruff + black --check
-make test     # pytest + coverage
+## 👨‍💻 Author
+
+**P. Akash Singh**
+📧 [elearning.apu@gmail.com](mailto:elearning.apu@gmail.com)
+🌐 [GitHub Profile](https://github.com/p-akash-iisc)
+
+---
+
+⭐ *If you found this project helpful, please consider giving it a star!* 🌟
+
 ```
 
-## Citation
-See `CITATION.cff`.
-
 ---
 
-## License
-[MIT](LICENSE)
+Would you like me to make a **shorter "resume-style project summary"** version too — something you can directly paste into your CV or LinkedIn under *Projects*?
+```
